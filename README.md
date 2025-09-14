@@ -1,30 +1,30 @@
-# Taller de introducción a `git` y GitHub
+# Taller d'introducció a `git` i GitHub
 
-En este taller de introducción a `git` y [GitHub][1] aprenderemos los comandos básicos para empezar a trabajar con repositorios de forma local y remota.
+En aquest taller d'introducció a `git` i [GitHub][1] aprendrem els comandaments bàsics per començar a treballar amb repositoris de forma local i remota.
 
 1. [`git`](#git)  
-  1.1 [Instalación y configuración de `git`](#instalación-y-configuración-de-git)  
-  1.2 [Secciones principales de un repositorio `git`](#secciones-principales-de-un-repositorio-git)  
-  1.3 [Estados de un archivo en `git`](#estados-de-un-archivo-en-git)  
-  1.4 [Cómo trabajar con un repositorio local](#cómo-trabajar-con-un-repositorio-local)  
-  1.5 [Cómo deshacer cambios](#cómo-deshacer-cambios)  
-  1.6 [Borrando y moviendo/renombrando archivos](#borrando-y-moviendorenombrando-archivos)  
-  1.7 [Cómo trabajar con un repositorio remoto](#cómo-trabajar-con-un-repositorio-remoto)  
-  1.8 [Branches](#branches)  
-  1.9 [Cómo trabajar en equipo con `git`](#cómo-trabajar-en-equipo-con-git)  
-  1.10 [El archivo `.gitignore`](#el-archivo-gitignore)  
-  1.11 [Consultar el historial de *commits*](#consultar-el-historial-de-commits)  
+       1.1 [Instal·lació i configuració de `git`](#instal·lació-i-configuració-de-git)  
+       1.2 [Seccions principals d'un repositori `git`](#seccions-principals-dun-repositori-git)  
+       1.3 [Estats d'un fitxer en `git`](#estats-dun-fitxer-en-git)  
+       1.4 [Com treballar amb un repositori local](#com-treballar-amb-un-repositori-local)  
+       1.5 [Com desfer canvis](#com-desfer-canvis)  
+       1.6 [Esborrant i movent/renombrant fitxers](#esborrant-i-moventrenombrant-fitxers)  
+       1.7 [Com treballar amb un repositori remot](#com-treballar-amb-un-repositori-remot)  
+       1.8 [Branches](#branches)  
+       1.9 [Com treballar en equip amb `git`](#com-treballar-en-equip-amb-git)  
+       1.10 [El fitxer `.gitignore`](#el-fitxer-gitignore)  
+       1.11 [Consultar l'historial de *commits*](#consultar-lhistorial-de-commits)  
 2. [GitHub](#github)  
-  2.1 [Creación de un nuevo usuario](#crear-un-nuevo-usuario)  
-  2.2 [Configuración de GitHub](#configuración-de-github)  
-  2.3 [*Pull Requests* en GitHub](#pull-requests-en-github)  
-  2.4 [*Issues* en GitHub](#issues-en-github)  
+       2.1 [Creació d'un nou usuari](#creació-dun-nou-usuari)  
+       2.2 [Configuració de GitHub](#configuració-de-github)  
+       2.3 [*Pull Requests* a GitHub](#pull-requests-a-github)  
+       2.4 [*Issues* a GitHub](#issues-a-github)  
 
 # `git`
 
-## Instalación y configuración de `git`
+## Instal·lació i configuració de `git`
 
-### Instalación de `git`
+### Instal·lació de `git`
 
 #### Ubuntu
 
@@ -35,29 +35,29 @@ sudo apt-get install git
 
 #### Windows
 
-Descargar desde la web oficial: http://git-scm.com/downloads.
+Descarregar des de la web oficial: http://git-scm.com/downloads.
 
-### Configuración de `git`
+### Configuració de `git`
 
-Configuramos el nombre y el email que aparecerán en los *commits* que hagamos sobre los repositorios.
-
-```
-git config --global user.name "Nombre"
-```
+Configurem el nom i el correu electrònic que apareixeran als *commits* que fem sobre els repositoris.
 
 ```
-git config --global user.email "correo@electronico.com"
+git config --global user.name "Nom"
 ```
 
-Para comprobar si se han aplicado los cambios podemos ejecutar el siguiente comando para mostrar cuál es la configuración actual de `git`:
+```
+git config --global user.email "correu@electronic.com"
+```
+
+Per comprovar si s'han aplicat els canvis podem executar el següent comandament per mostrar quina és la configuració actual de `git`:
 
 ```
 git config --list
 ```
 
-## Secciones principales de un repositorio `git`
+## Seccions principals d'un repositori `git`
 
-En un repositorio `git` podemos diferenciar las siguientes secciones:
+En un repositori `git` podem diferenciar les següents seccions:
 
 * *Workspace*
 * *Staging area (Index)*
@@ -66,18 +66,18 @@ En un repositorio `git` podemos diferenciar las siguientes secciones:
 
 ![](images/img-00.png)
 
-Figura 1: Imagen de [Oliver Steele](http://osteele.com).
+Figura 1: Imatge d'[Oliver Steele](http://osteele.com).
 
-## Estados de un archivo en `git`
+## Estats d'un fitxer en `git`
 
-Un archivo puede estar en alguno de los siguientes estados:
+Un fitxer pot estar en algun dels següents estats:
 
-* Sin seguimiento (*untracked*)
-* Preparado (*staged*)
-* Modificado (*modified*)
-* Confirmado (*commited*)
+* Sense seguiment (*untracked*)
+* Preparat (*staged*)
+* Modificat (*modified*)
+* Confirmat (*commited*)
 
-El siguiente diagrama muestra en qué sección se puede encontrar cada archivo en función de su estado.
+El següent diagrama mostra en quina secció es pot trobar cada fitxer en funció del seu estat.
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -94,28 +94,27 @@ El siguiente diagrama muestra en qué sección se puede encontrar cada archivo e
        |                |                |
        +                +                +
 ```
-
-Para consultar el estado de los archivos usamos el comando:
+Per consultar l'estat dels fitxers fem servir el comandament:
 
 ```
 git status
 ```
 
-**Este comando es muy usado** ya que es fundamental conocer el estado de los archivos de nuestro repositorio.
+**Aquest comandament és molt utilitzat** ja que és fonamental conèixer l'estat dels fitxers del nostre repositori.
 
-## Cómo trabajar con un repositorio local
+## Com treballar amb un repositori local
 
-### Creación de un repositorio local
+### Creació d'un repositori local
 
-Un repositorio Git es un directorio oculto llamado `.git` que se guarda en el directorio raíz de nuestro proyecto. El directorio `.git` almacena el historial de todos los cambios que se han realizado.
+Un repositori Git és un directori ocult anomenat `.git` que es guarda al directori arrel del nostre projecte. El directori `.git` emmagatzema l'historial de tots els canvis que s'han realitzat.
 
-El comando para crear un repositorio `git` es el siguiente:
+El comandament per crear un repositori `git` és el següent:
 
 ```
 git init
 ```
 
-Por ejemplo, para crear nuestro primer repositorio podríamos hacer lo siguiente:
+Per exemple, per crear el nostre primer repositori podríem fer el següent:
 
 ```
 mkdir taller-git
@@ -123,7 +122,7 @@ cd taller-git
 git init
 ```
 
-Si examinamos el contenido del directorio `.git` veremos el siguiente árbol de contenidos:
+Si examinem el contingut del directori `.git` veurem el següent arbre de continguts:
 
 ```
 .
@@ -152,76 +151,76 @@ Si examinamos el contenido del directorio `.git` veremos el siguiente árbol de 
         └── tags
 ```
 
-### Comandos básicos para trabajar con un repositorio local
+### Comandaments bàsics per treballar amb un repositori local
 
-**Paso 1**
+**Pas 1**
 
-En primer lugar comprobaremos en qué estado se encuentran los archivos del repositorio:
+En primer lloc comprovarem en quin estat es troben els fitxers del repositori:
 
 ```
 git status
 ```
 
-**Paso 2**
+**Pas 2**
 
-Si tenemos archivos en estado ***untracked*** o ***modified*** los añadimos a la ***staging area*** con el siguiente comando:
+Si tenim fitxers en estat ***untracked*** o ***modified*** els afegim a la ***staging area*** amb el següent comandament:
 
 ```
-git add <nombre_archivo>
+git add <nom_fitxer>
 ```
 
-El comando anterior nos permite seleccionar cuáles son los archivos que queremos mover a la ***staging area***. Si tenemos varios archivos que queremos mover a la ***staging area*** no es necesario hacerlo uno a uno, podemos usar el siguiente comando para moverlos todos a la vez:
+El comandament anterior ens permet seleccionar quins són els fitxers que volem moure a la ***staging area***. Si tenim diversos fitxers que volem moure a la ***staging area*** no és necessari fer-ho un a un, podem utilitzar el següent comandament per moure'ls tots alhora:
 
 ```
 git add -A
 ```
 
-**Paso 3**
+**Pas 3**
 
-Una vez que tenemos los archivos en la ***staging area*** tenemos que hacer un ***commit*** para moverlos al repositorio:
-
-```
-git commit -m "Breve comentario con los cambios realizados"
-```
-
-## Cómo deshacer cambios
-
-### Modificar el texto del último *commit*
+Un cop tenim els fitxers a la ***staging area*** hem de fer un ***commit*** per moure'ls al repositori:
 
 ```
-git commit -m "Modifico el texto del último commit" --amend
+git commit -m "Breu comentari amb els canvis realitzats"
 ```
 
-### Añadir archivos al último *commit*
+## Com desfer canvis
+
+### Modificar el text de l'últim *commit*
+
+```
+git commit -m "Modifico el text de l'últim commit" --amend
+```
+
+### Afegir fitxers a l'últim *commit*
 
 ```
 git commit --amend
 ```
 
-**Ejemplo:**
+**Exemple:**
 
-Suponemos que acabamos de hacer un *commit* en el repositorio pero nos hemos olvidado de añadir un archivo que queremos incluir en ese *commit*. En estos casos podemos utilizar el comando `git commit --amend` para añadir nuevos archivos al último *commit* realizado sobre el repositorio.
+Suposem que acabem de fer un *commit* al repositori però ens hem oblidat d'afegir un fitxer que volem incloure en aquest *commit*. En aquests casos podem utilitzar el comandament `git commit --amend` per afegir nous fitxers a l'últim *commit* realitzat sobre el repositori.
 
-A continuación se muestra una posible secuencia de comandos simulando la situación que acabamos de describir.
+A continuació es mostra una possible seqüència de comandaments simulant la situació que acabem de descriure.
 
 ```
-git add archivo.txt
-git commit -m "Añadimos el archivo.txt"
-git add archivo_olvidado.txt
+git add fitxer.txt
+git commit -m "Afegim el fitxer.txt"
+git add fitxer_oblidat.txt
 git commit --amend
 ```
 
-### Mover un archivo del *staging area* al *workspace*
+### Moure un fitxer de la *staging area* al *workspace*
 
 ```
-git reset HEAD <archivo>
+git reset HEAD <fitxer>
 ```
 
-**Ejemplo:**
+**Exemple:**
 
-Suponemos que hemos añadido un archivo llamado `archivo.txt` al *staging area* pero queremos volver a llevarlo al *workspace* para realizar una nueva modificación antes de hacer un *commit* en el repositorio.
+Suposem que hem afegit un fitxer anomenat `fitxer.txt` a la *staging area* però volem tornar a portar-lo al *workspace* per fer una nova modificació abans de fer un *commit* al repositori.
 
-El escenario descrito sería el siguiente:
+L'escenari descrit seria el següent:
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -239,13 +238,13 @@ El escenario descrito sería el siguiente:
        +                +                +
 ```
 
-Para mover el archivo `archivo.txt` al *workspace* ejecutamos:
+Per moure el fitxer `archivo.txt` al *workspace* executem:
 
 ```
 git reset HEAD archivo.txt
 ```
 
-Después del comando anterior el repositorio quedaría así:
+Després de l'ordre anterior el repositori quedaria així:
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -263,17 +262,17 @@ Después del comando anterior el repositorio quedaría así:
        +                +                +
 ```
 
-### Deshacer cambios en el *workspace*
+### Desfer canvis en el *workspace*
 
 ```
-git ckeckout -- <archivo>
+git checkout -- <fitxer>
 ```
 
-**Ejemplo:**
+**Exemple:**
 
-Suponemos que hemos realizado algunos cambios sobre un  archivo llamado `archivo.txt` pero queremos deshacerlos y que el archivo vuelva a tener el contenido con el que se guardó en el último *commit* en el repositorio.
+Suposem que hem realitzat alguns canvis sobre un fitxer anomenat `fitxer.txt` però volem desfer-los i que el fitxer torni a tenir el contingut amb el qual es va guardar en l'últim *commit* al repositori.
 
-El escenario descrito sería el siguiente:
+L'escenari descrit seria el següent:
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -291,25 +290,25 @@ El escenario descrito sería el siguiente:
        +                +                +
 ```
 
-Para deshacer los cambios realizados en `archivo.txt` y volver a su estado anterior sería necesario ejecutar:
+Per desfer els canvis realitzats en `archivo.txt` i tornar al seu estat anterior seria necessari executar:
 
 ```
-git ckeckout -- archivo.txt
+git checkout -- archivo.txt
 ```
 
-## Borrando y moviendo/renombrando archivos
+## Esborrant i movent/renombrant fitxers
 
-### Borrar un archivo
+### Esborrar un fitxer
 
-Para borrar un archivo que ya se encuentra bajo el control de versiones de `git` es necesario utilizar el siguiente comando:
+Per esborrar un fitxer que ja es troba sota el control de versions de `git` és necessari utilitzar el següent comandament:
 
 ```
-git rm <archivo>
+git rm <fitxer>
 ```
 
-Vamos a ver los cuatro casos que podemos encontrarnos a la hora de borrar un archivo.
+Vegem els quatre casos que podem trobar-nos a l'hora d'esborrar un fitxer.
 
-1. Queremos eliminar un archivo que todavía **no ha sido incluido en el repositorio** y se encuentra en la sección `Workspace` con el estado `Untracked`. En este caso no es necesario utilizar ningún comando específico de `git`, lo borraríamos con el comando `rm`.
+1. Volem eliminar un fitxer que encara **no ha estat inclòs en el repositori** i es troba a la secció `Workspace` amb l'estat `Untracked`. En aquest cas no és necessari utilitzar cap comandament específic de `git`, l'esborraríem amb el comandament `rm`.
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -326,14 +325,13 @@ Vamos a ver los cuatro casos que podemos encontrarnos a la hora de borrar un arc
        |                |                |
        +                +                +
 ```
-
-**Ejemplo:**
+**Exemple:**
 
 ```
-rm archivo.txt
+rm fitxer.txt
 ```
 
-2. Queremos eliminar un archivo que **ya está incluido en el repositorio** y se encuentra en la sección `Workspace` con el estado `Modified`.
+2. Volem eliminar un fitxer que **ja està inclòs en el repositori** i es troba a la secció `Workspace` amb l'estat `Modified`.
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -350,8 +348,7 @@ rm archivo.txt
        |                |                |
        +                +                +
 ```
-
-3. Queremos eliminar un archivo que **ya está incluido en el repositorio** y se encuentra en la sección `Staging Area` con el estado `Staged`.
+3. Volem eliminar un fitxer que **ja està inclòs en el repositori** i es troba a la secció `Staging Area` amb l'estat `Staged`.
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -368,8 +365,7 @@ rm archivo.txt
        |                |                |
        +                +                +
 ```
-
-4. Queremos eliminar un archivo que **ya está incluido en el repositorio** y se encuentra en la sección `Local Repository` con el estado `Commited`.
+4. Volem eliminar un fitxer que **ja està inclòs en el repositori** i es troba a la secció `Local Repository` amb l'estat `Commited`.
 
 ```
 +-------------+  +-------------+  +-------------+
@@ -386,98 +382,97 @@ rm archivo.txt
        |                |                |
        +                +                +
 ```
+En els tres últims casos l'arxiu que volem eliminar ja es troba sota el sistema de control de `git`, per aquest motiu cal utilitzar l'ordre `git rm` i després caldria fer un `git commit` per guardar els canvis al repositori.
 
-En los tres últimos casos el archivo que queremos eliminar ya se encuentra bajo el sistema de control de `git`, por este motivo hay que utilizar el comando `git rm` y después habría que hacer un `git commit` para guardar los cambios en el repositorio.
-
-**Ejemplo:**
-
-```
-git rm archivo.txt
-git commit -m "Se elimina archivo.txt"
-```
-
-### Mover/Renombrar archivos
-
-Para mover a otro directorio o renombrar un archivo que ya se encuentra bajo el control de versiones de `git` es necesario utilizar el siguiente comando:
+**Exemple:**
 
 ```
-git mv <archivo> <nuevo_nombre>
+git rm fitxer.txt
+git commit -m "S'elimina fitxer.txt"
 ```
 
-A la hora de mover/renombrar archivos nos podemos encontrar los mismos casos que hemos comentado en la sección anterior. Por lo tanto, para mover o renombrar un archivo que todavía **no ha sido incluido en el repositorio** y se encuentra en la sección `Workspace` con el estado `Untracked` no es necesario utilizar ningún comando específico de `git`, lo haríamos con el comando `mv`. Para el resto de casos donde el archivo ya se encuentra bajo el sistema de control de `git`, usaremos el comando `git mv` y después habría que hacer un `git commit` para guardar los cambios en el repositorio.
+### Moure/Reanomenar fitxers
 
-**Ejemplo:**
-
-```
-git mv archivo.txt nuevo_nombre.txt
-git commit -m "Se renombra archivo.txt por nuevo_nombre.txt"
-```
-
-## Cómo trabajar con un repositorio remoto
-
-Existen dos opciones para empezar a trabajar con un repositorio remoto.
-
-1. Cuando no partimos de ningún repositorio local y lo que queremos hacer es **clonar** el repositorio remoto en nuestra máquina.
-2. Cuando ya tenemos creado un repositorio local y queremos **añadir** un repositorio remoto para sincronizarnos.
-
-### Opción 1: Clonar un repositorio remoto
+Per moure a un altre directori o reanomenar un fitxer que ja es troba sota el control de versions de `git` és necessari utilitzar l'ordre següent:
 
 ```
-git clone <url_del_repositorio_remoto>
+git mv <fitxer> <nou_nom>
 ```
 
-**Ejemplo:**
+A l'hora de moure/reanomenar fitxers ens podem trobar els mateixos casos que hem comentat a la secció anterior. Per tant, per moure o reanomenar un fitxer que encara **no ha estat inclòs al repositori** i es troba a la secció `Workspace` amb l'estat `Untracked` no és necessari utilitzar cap ordre específic de `git`, ho faríem amb l'ordre `mv`. Per a la resta de casos on el fitxer ja es troba sota el sistema de control de `git`, utilitzarem l'ordre `git mv` i després caldria fer un `git commit` per guardar els canvis al repositori.
+
+**Exemple:**
+
+```
+git mv fitxer.txt nou_nom.txt
+git commit -m "Es reanomena fitxer.txt per nou_nom.txt"
+```
+
+## Com treballar amb un repositori remot
+
+Hi ha dues opcions per començar a treballar amb un repositori remot.
+
+1. Quan no partim de cap repositori local i el que volem fer és **clonar** el repositori remot a la nostra màquina.
+2. Quan ja tenim creat un repositori local i volem **afegir** un repositori remot per sincronitzar-nos.
+
+### Opció 1: Clonar un repositori remot
+
+```
+git clone <url_del_repositori_remot>
+```
+
+**Exemple:**
 
 ```
 git clone https://github.com/josejuansanchez/taller-git-github.git
 ```
 
-Al clonar este repositorio se nos creará un directorio en nuestra máquina con el nombre `taller-git-github` con el contenido del repositorio remoto.
+En clonar aquest repositori se'ns crearà un directori a la nostra màquina amb el nom `taller-git-github` amb el contingut del repositori remot.
 
-Esta es la opción que yo personalmente suelo utilizar a la hora de trabajar con repositorios remotos. En primer lugar creo el repositorio remoto en `GitHub` y luego hago un `git clone` para clonarlo en mi máquina local.
+Aquesta és l'opció que jo personalment solc utilitzar a l'hora de treballar amb repositoris remots. En primer lloc creo el repositori remot a `GitHub` i després faig un `git clone` per clonar-lo a la meva màquina local.
 
-### Opción 2: Añadir un repositorio remoto a un repositorio ya existente
+### Opció 2: Afegir un repositori remot a un repositori ja existent
 
 ```
-git remote add <alias> <url_del_repositorio_remoto>
+git remote add <àlies> <url_del_repositori_remot>
 ```
 
-**Ejemplo:**
+**Exemple:**
 
-Suponemos que ya tenemos creado un repositorio local y queremos añadir el repositorio remoto del taller de git. En este caso hemos usado `taller-git` como alias. Este sería el comando que tendríamos que ejecutar:
+Suposem que ja tenim creat un repositori local i volem afegir el repositori remot del taller de git. En aquest cas hem utilitzat `taller-git` com a àlies. Aquest seria l'ordre que hauríem d'executar:
 
 ```
 git remote add taller-git https://github.com/josejuansanchez/taller-git-github.git
 ```
 
-Para comprobar si el repositorio remoto se ha añadido correctamente ejecutamos:
+Per comprovar si el repositori remot s'ha afegit correctament executem:
 
 ```
 git remote -v
 ```
 
-El comando anterior nos devolverá estas dos líneas:
+L'ordre anterior ens retornarà aquestes dues línies:
 
 ```
 taller-git	https://github.com/josejuansanchez/taller-git-github.git (fetch)
 taller-git	https://github.com/josejuansanchez/taller-git-github.git (push)
 ```
 
-La primera línea acabada con la palabra *(fectch)* indica que esa es la url del repositorio remoto desde el que podemos recibir cambios.
+La primera línia acabada amb la paraula *(fetch)* indica que aquesta és la url del repositori remot des del qual podem rebre canvis.
 
-La segunda línea acabada con la palabra *(push)* indica que esa es la url del repositorio remoto donde podemos enviar nuestros cambios.
+La segona línia acabada amb la paraula *(push)* indica que aquesta és la url del repositori remot on podem enviar els nostres canvis.
 
-### Comandos básicos para trabajar con un repositorio remoto
+### Ordres bàsiques per treballar amb un repositori remot
 
-Utilizaremos los mismos comandos que usamos para trabajar con un repositorio local y además añadiremos `git push` y `git pull`.
+Utilitzarem les mateixes ordres que fem servir per treballar amb un repositori local i a més afegirem `git push` i `git pull`.
 
-#### Enviamos los cambios con `push`
+#### Enviem els canvis amb `push`
 
 ```
 git push
 ```
 
-Usamos este comando para enviar al repositorio remoto los *commits* que hemos hecho en nuestro repositorio local. La forma más habitual de usarlo es hacerlo después de cada `commit`.
+Utilitzem aquesta ordre per enviar al repositori remot els *commits* que hem fet al nostre repositori local. La forma més habitual d'utilitzar-lo és fer-ho després de cada `commit`.
 
 ```
 +-------------+  +-------------+  +-------------+  +-------------+
@@ -496,23 +491,23 @@ Usamos este comando para enviar al repositorio remoto los *commits* que hemos he
 
 ```
 
-**Ejemplo:**
+**Exemple:**
 
 ```
-git add archivo.txt
-git commit -m "Actualizamos el archivo.txt"
+git add fitxer.txt
+git commit -m "Actualitzem el fitxer.txt"
 git push
 ```
 
-#### Recibimos los cambios con `pull`
+#### Rebem els canvis amb `pull`
 
 ```
 git pull
 ```
 
-Usamos este comando para recibir los nuevos *commits* que existen en el repositorio remoto y aún no tenemos en nuestro repositorio local. Además de recibir los nuevos cambios, los fusiona con el contenido de nuestro repositorio local, actualizando de este modo los archivos que tengamos en la sección `Local Repository` y `Workspace`. Esto quiere decir que si teníamos un archivo con estado `Modified` en la sección `Workspace` se perderían todos los cambios.
+Utilitzem aquest comandament per rebre els nous *commits* que existeixen en el repositori remot i que encara no tenim al nostre repositori local. A més de rebre els nous canvis, els fusiona amb el contingut del nostre repositori local, actualitzant així els fitxers que tinguem a la secció `Local Repository` i `Workspace`. Això vol dir que si teníem un fitxer amb estat `Modified` a la secció `Workspace` es perdrien tots els canvis.
 
-Tenga en cuenta que `git pull` es equivalente a realizar `git fetch` seguido de `git merge`.
+Tingueu en compte que `git pull` és equivalent a realitzar `git fetch` seguit de `git merge`.
 
 ```
 +-------------+  +-------------+  +-------------+  +-------------+
@@ -533,42 +528,42 @@ Tenga en cuenta que `git pull` es equivalente a realizar `git fetch` seguido de 
 
 ## Branches
 
-Se recomienda leer el [capítulo 3: Ramificaciones en Git][2] del libro [Pro Git][3] de Scott Chacon y Ben Straub.
+Es recomana llegir el [capítol 3: Ramificacions en Git][2] del llibre [Pro Git][3] de Scott Chacon i Ben Straub.
 
-## Cómo trabajar en equipo con `git`
+## Com treballar en equip amb `git`
 
 ![](images/img-01.png)
 
-Figura 2: Imagen extraída del blog de [James Chambers](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
+Figura 2: Imatge extreta del blog de [James Chambers](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
 
-Se recomienda leer el *post* [Using Git in a team: a cheatsheet](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
+Es recomana llegir el *post* [Using Git in a team: a cheatsheet](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
 
-## El archivo `.gitignore`
+## El fitxer `.gitignore`
 
-Dentro del directorio raíz de nuestro proyecto podemos tener un archivo especial llamado `.gitignore` donde indicamos los archivos o tipos de archivos que queremos que sean ignorados por `git`. 
+Dins del directori arrel del nostre projecte podem tenir un fitxer especial anomenat `.gitignore` on indiquem els fitxers o tipus de fitxers que volem que siguin ignorats per `git`. 
 
-Por ejemplo, si en nuestro repositorio no queremos guardar archivos `*.class` y `*.log` tendríamos el siguiente contenido en el archivo `.gitignore`:
+Per exemple, si en el nostre repositori no volem guardar fitxers `*.class` i `*.log` tindríem el següent contingut en el fitxer `.gitignore`:
 
 ```
 *.class
 *.log
 ```
 
-## Consultar el historial de *commits*
+## Consultar l'historial de *commits*
 
-Para consultar el historial de *commits* podemos usar el comando `git log`. Este comando muestra información bastante completa de cada uno de los *commits* que se han realizado en el repositorio. Para cada *commit* podemos consultar cuál es la suma de comprobación SHA-1, el nombre, la dirección de correo del autor, la fecha/hora y el mensaje de confirmación del autor.
+Per consultar l'historial de *commits* podem utilitzar el comandament `git log`. Aquest comandament mostra informació bastant completa de cadascun dels *commits* que s'han realitzat en el repositori. Per a cada *commit* podem consultar quina és la suma de comprovació SHA-1, el nom, l'adreça de correu de l'autor, la data/hora i el missatge de confirmació de l'autor.
 
 ```
 git log
 ```
 
-La opción `--oneline` nos muestra menos información del historial, mostrando una única línea por *commit*.
+L'opció `--oneline` ens mostra menys informació de l'historial, mostrant una única línia per *commit*.
 
 ```
 git log --oneline
 ```
 
-La opción `--graph` muestra el historial de *branches* y *merges* con un sencillo gráfico ASCII.
+L'opció `--graph` mostra l'historial de *branches* i *merges* amb un senzill gràfic ASCII.
 
 ```
 git log --graph
@@ -576,50 +571,50 @@ git log --graph
 
 # GitHub
 
-Se recomienda leer el [capítulo 6: GitHub][4], del libro [Pro Git][3] de Scott Chacon y Ben Straub.
+Es recomana llegir el [capítol 6: GitHub][4], del llibre [Pro Git][3] de Scott Chacon i Ben Straub.
 
 <!--
-## Crear un nuevo usuario
+## Crear un nou usuari
 
-(*Próximamente*)
+(*Pròximament*)
 
-## Configuración de GitHub
+## Configuració de GitHub
 
-(*Próximamente*)
+(*Pròximament*)
 
-## *Pull Requests* en GitHub
+## *Pull Requests* a GitHub
 
-(*Próximamente*)
+(*Pròximament*)
 
-## *Issues* en GitHub
+## *Issues* a GitHub
 
-(*Próximamente*)
+(*Pròximament*)
 -->
 
-## Tips
+## Consells
 
-* [Recordar la contraseña](https://gist.github.com/ankurk91/f0b26f1c30d0d6d3ca4e).
+* [Recordar la contrasenya](https://gist.github.com/ankurk91/f0b26f1c30d0d6d3ca4e).
 
-## Referencias
+## Referències
 
 * [Pro Git](https://git-scm.com/book/es/v2). Scott Chacon, Ben Straub.
-* [Aprende Git](https://github.com/oslugr/curso-git). Juan Julián Merelo, Pablo Hinojosa.
-* [Git y GitHub. Guía de superviviencia](https://leanpub.com/gitygithub). Luis José Sánchez González.
+* [Aprèn Git](https://github.com/oslugr/curso-git). Juan Julián Merelo, Pablo Hinojosa.
+* [Git i GitHub. Guia de supervivència](https://leanpub.com/gitygithub). Luis José Sánchez González.
 * [GitHub Guides](https://guides.github.com).
 * [Using Git source control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview). Visual Studio Code.
 
-## Créditos
+## Crèdits
 
-* La *Figura 1* es una imagen diseñada por [Oliver Steele](http://osteele.com).
-* La *Figura 2* es una imagen extraída del blog de [James Chambers](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
+* La *Figura 1* és una imatge dissenyada per [Oliver Steele](http://osteele.com).
+* La *Figura 2* és una imatge extreta del blog de [James Chambers](http://jameschambers.co/writing/git-team-workflow-cheatsheet/).
 
 ## Autor
 
-Este material ha sido desarrollado por [José Juan Sánchez](http://josejuansanchez.org).
+Aquest material ha estat desenvolupat per [José Juan Sánchez](http://josejuansanchez.org).
 
-## Licencia
+## Llicència
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Llicència de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Aquesta obra està sota una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">llicència de Creative Commons Reconeixement-CompartirIgual 4.0 Internacional</a>.
 
 [1]: https://github.com
 [2]: https://git-scm.com/book/es/v2/Ramificaciones-en-Git-%C2%BFQu%C3%A9-es-una-rama%3F
