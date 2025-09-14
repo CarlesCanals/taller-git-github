@@ -1,22 +1,22 @@
 # Taller d'introducció a `git` i GitHub
 
-En aquest taller d'introducció a `git` i [GitHub][1] aprendrem les comandes bàsiques per començar a treballar amb repositoris de forma local i remota.
+En aquest taller d'introducció a `git` i [GitHub][1] aprendrem les ordres bàsiques per començar a treballar amb repositoris de manera local i remota.
 
 1. [`git`](#git)  
        1.1 [Instal·lació i configuració de `git`](#instal·lació-i-configuració-de-git)  
        1.2 [Seccions principals d'un repositori `git`](#seccions-principals-dun-repositori-git)  
-       1.3 [Estats d'un fitxer a `git`](#estats-dun-fitxer-a-git)
+       1.3 [Estats d'un fitxer en `git`](#estats-dun-fitxer-en-git)  
        1.4 [Com treballar amb un repositori local](#com-treballar-amb-un-repositori-local)  
        1.5 [Com desfer canvis](#com-desfer-canvis)  
-       1.6 [Esborrar i moure/reanomenar fitxers](#esborrar-i-mourereanomenar-fitxers)  
+       1.6 [Esborrant i movent/reanomenant fitxers](#esborrant-i-moventreanomenant-fitxers)  
        1.7 [Com treballar amb un repositori remot](#com-treballar-amb-un-repositori-remot)  
-       1.8 [Branques](#branques)  
+       1.8 [Branches](#branches)  
        1.9 [Com treballar en equip amb `git`](#com-treballar-en-equip-amb-git)  
-       1.10 [L'arxiu `.gitignore`](#larxiu-gitignore)
+       1.10 [El fitxer `.gitignore`](#el-fitxer-gitignore)  
        1.11 [Consultar l'historial de *commits*](#consultar-lhistorial-de-commits)  
 2. [GitHub](#github)  
-       2.1 [Creació d'un nou usuari](#creacio-dun-nou-usuari)  
-       2.2 [Configuració de GitHub](#configuracio-de-github)  
+       2.1 [Creació d'un nou usuari](#creació-dun-nou-usuari)  
+       2.2 [Configuració de GitHub](#configuració-de-github)  
        2.3 [*Pull Requests* a GitHub](#pull-requests-a-github)  
        2.4 [*Issues* a GitHub](#issues-a-github)  
 
