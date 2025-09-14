@@ -204,8 +204,8 @@ Suposem que acabem de fer un *commit* al repositori però ens hem oblidat d'afeg
 A continuació es mostra una possible seqüència de comandaments simulant la situació que acabem de descriure.
 
 ```
-git add fitxer.txt
-git commit -m "Afegim el fitxer.txt"
+git add arxiu.txt
+git commit -m "Afegim el arxiu.txt"
 git add fitxer_oblidat.txt
 git commit --amend
 ```
@@ -218,7 +218,7 @@ git reset HEAD <fitxer>
 
 **Exemple:**
 
-Suposem que hem afegit un fitxer anomenat `fitxer.txt` a la *staging area* però volem tornar a portar-lo al *workspace* per fer una nova modificació abans de fer un *commit* al repositori.
+Suposem que hem afegit un fitxer anomenat `arxiu.txt` a la *staging area* però volem tornar a portar-lo al *workspace* per fer una nova modificació abans de fer un *commit* al repositori.
 
 L'escenari descrit seria el següent:
 
@@ -231,17 +231,17 @@ L'escenari descrit seria el següent:
        |                |                |
        |                |                |
        |                |                |
-       |            archivo.txt          |
+       |            arxiu.txt          |
        |                |                |
        |                |                |
        |                |                |
        +                +                +
 ```
 
-Per moure el fitxer `archivo.txt` al *workspace* executem:
+Per moure el fitxer `arxiu.txt` al *workspace* executem:
 
 ```
-git reset HEAD archivo.txt
+git reset HEAD arxiu.txt
 ```
 
 Després de l'ordre anterior el repositori quedaria així:
@@ -255,7 +255,7 @@ Després de l'ordre anterior el repositori quedaria així:
        |                |                |
        |                |                |
        |                |                |
-   archivo.txt          |                |
+   arxiu.txt          |                |
    (Modified)           |                |
        |                |                |
        |                |                |
@@ -270,7 +270,7 @@ git checkout -- <fitxer>
 
 **Exemple:**
 
-Suposem que hem realitzat alguns canvis sobre un fitxer anomenat `fitxer.txt` però volem desfer-los i que el fitxer torni a tenir el contingut amb el qual es va guardar en l'últim *commit* al repositori.
+Suposem que hem realitzat alguns canvis sobre un fitxer anomenat `arxiu.txt` però volem desfer-los i que el fitxer torni a tenir el contingut amb el qual es va guardar en l'últim *commit* al repositori.
 
 L'escenari descrit seria el següent:
 
@@ -283,17 +283,17 @@ L'escenari descrit seria el següent:
        |                |                |
        |                |                |
        |                |                |
-   archivo.txt          |                |
+   arxiu.txt          |                |
    (Modified)           |                |
        |                |                |
        |                |                |
        +                +                +
 ```
 
-Per desfer els canvis realitzats en `archivo.txt` i tornar al seu estat anterior seria necessari executar:
+Per desfer els canvis realitzats en `arxiu.txt` i tornar al seu estat anterior seria necessari executar:
 
 ```
-git checkout -- archivo.txt
+git checkout -- arxiu.txt
 ```
 
 ## Esborrant i movent/renombrant fitxers
@@ -318,7 +318,7 @@ Vegem els quatre casos que podem trobar-nos a l'hora d'esborrar un fitxer.
        |                |                |
        |                |                |
        |                |                |
-   archivo.txt          |                |
+   arxiu.txt          |                |
    (Untracked)          |                |
        |                |                |
        |                |                |
@@ -328,7 +328,7 @@ Vegem els quatre casos que podem trobar-nos a l'hora d'esborrar un fitxer.
 **Exemple:**
 
 ```
-rm fitxer.txt
+rm arxiu.txt
 ```
 
 2. Volem eliminar un fitxer que **ja està inclòs en el repositori** i es troba a la secció `Workspace` amb l'estat `Modified`.
@@ -341,7 +341,7 @@ rm fitxer.txt
        |                |                |
        |                |                |
        |                |                |
-   archivo.txt          |                |
+   arxiu.txt          |                |
    (Modified)           |                |
        |                |                |
        |                |                |
@@ -358,7 +358,7 @@ rm fitxer.txt
        |                |                |
        |                |                |
        |                |                |
-       |            archivo.txt          |
+       |            arxiu.txt          |
        |             (Staged)            |
        |                |                |
        |                |                |
@@ -375,7 +375,7 @@ rm fitxer.txt
        |                |                |
        |                |                |
        |                |                |
-       |                |            archivo.txt
+       |                |            arxiu.txt
        |                |            (Commited)
        |                |                |
        |                |                |
@@ -387,8 +387,8 @@ En els tres últims casos l'arxiu que volem eliminar ja es troba sota el sistema
 **Exemple:**
 
 ```
-git rm fitxer.txt
-git commit -m "S'elimina fitxer.txt"
+git rm arxiu.txt
+git commit -m "S'elimina arxiu.txt"
 ```
 
 ### Moure/Reanomenar fitxers
@@ -404,8 +404,8 @@ A l'hora de moure/reanomenar fitxers ens podem trobar els mateixos casos que hem
 **Exemple:**
 
 ```
-git mv fitxer.txt nou_nom.txt
-git commit -m "Es reanomena fitxer.txt per nou_nom.txt"
+git mv arxiu.txt nou_nom.txt
+git commit -m "Es reanomena arxiu.txt per nou_nom.txt"
 ```
 
 ## Com treballar amb un repositori remot
@@ -494,8 +494,8 @@ Utilitzem aquesta ordre per enviar al repositori remot els *commits* que hem fet
 **Exemple:**
 
 ```
-git add fitxer.txt
-git commit -m "Actualitzem el fitxer.txt"
+git add arxiu.txt
+git commit -m "Actualitzem el arxiu.txt"
 git push
 ```
 
